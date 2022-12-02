@@ -16,10 +16,10 @@ const HeaderLoggedOut = (props) => {
         console.log(response.data);
         props.setLoggedIn(true);
       } else {
-        console.log("Incorrect username/password");
+        alert("Incorrect username/password");
       }
     } catch (e) {
-      console.log("There was a problem");
+      alert("There was a problem");
     }
   }
 

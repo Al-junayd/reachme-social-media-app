@@ -21,7 +21,8 @@ const HeaderLoggedIn = (props) => {
         Create Post
       </a>
       <button
-        onclick={() => props.setLoggedIn(false)}
+        type="submit"
+        onClick={() => props.setLoggedIn(false)}
         className="btn btn-sm btn-secondary"
       >
         Sign Out
