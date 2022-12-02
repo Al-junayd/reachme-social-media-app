@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Page from "./Page";
 import Axios from "axios";
 
 const Main = () => {
+  const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       await Axios.post("http://localhost:3000/register", {
-        username: "test",
-        email: "test@test.com",
-        password: "qwerty123546789340",
+        username,
+        email,
+        password,
       });
-      console.log("User was succesfully created");
-    } catch (e) {}
+      alert("User was succesfully created");
+    } catch (e) {
+      alert(e.response.data);
+    }
   }
+
   return (
     <Page title="Welcome!!!" wide={true}>
       <div className="row align-items-center">
@@ -33,6 +40,7 @@ const Main = () => {
                 <small>Username</small>
               </label>
               <input
+                onChange={(e) => setUsername(e.target.value)}
                 id="username-register"
                 name="username"
                 className="form-control"
@@ -46,6 +54,7 @@ const Main = () => {
                 <small>Email</small>
               </label>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 id="email-register"
                 name="email"
                 className="form-control"
@@ -59,6 +68,7 @@ const Main = () => {
                 <small>Password</small>
               </label>
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 id="password-register"
                 name="password"
                 className="form-control"
