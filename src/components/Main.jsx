@@ -10,7 +10,7 @@ const Main = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await Axios.post("http://localhost:3000/register", {
+      await Axios.post("/register", {
         username,
         email,
         password,
