@@ -1,7 +1,9 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import ExampleContext from "../ExamplContext";
 
 const HeaderLoggedOut = (props) => {
+  const { setLoggedIn } = useContext(ExampleContext);
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -16,7 +18,7 @@ const HeaderLoggedOut = (props) => {
         localStorage.setItem("reachMeAppToken", response.data.token);
         localStorage.setItem("reachMeAppUsername", response.data.username);
         localStorage.setItem("reachMeAppAvatar", response.data.avatar);
-        props.setLoggedIn(true);
+        setLoggedIn(true);
       } else {
         alert("Incorrect username/password");
       }

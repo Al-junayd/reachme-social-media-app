@@ -1,12 +1,14 @@
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import ExampleContext from "../ExamplContext";
 import Page from "./Page";
 
 const CreatePost = (props) => {
   const [title, setTitle] = useState();
   const [body, setBody] = useState();
   const navigate = useNavigate();
+  const [addFlashMessages] = useContext(ExampleContext);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -16,8 +18,8 @@ const CreatePost = (props) => {
         body,
         token: localStorage.getItem("reachMeAppToken"),
       });
-      const PostSlug = title.split(" ").join("-");
-      props.addFlashMessages("Congrats, you Successfully created a post.");
+      // const PostSlug = title.split(" ").join("-");
+      addFlashMessages("Congrats, you Successfully created a post.");
       navigate(`/post/${response.data}`);
     } catch (error) {
       props.addFlashMessages("There was a problem here");

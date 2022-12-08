@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import ExampleContext from "../ExamplContext";
 
 const HeaderLoggedIn = (props) => {
+  const { setLoggedIn } = useContext(ExampleContext);
+
   function handleLogout() {
-    props.setLoggedIn(false);
+    setLoggedIn(false);
     localStorage.removeItem("reachMeAppToken");
     localStorage.removeItem("reachMeAppUsername");
     localStorage.removeItem("reachMeAppAvatar");
